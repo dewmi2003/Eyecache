@@ -2,13 +2,13 @@
 session_start();
 require 'db_connect.php';
 
-// Check admin login
+
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login_form.php");
     exit;
 }
 
-// Handle deletion of customer
+
 if (isset($_GET['delete_customer'])) {
     $id = intval($_GET['delete_customer']);
     $stmt = $pdo->prepare("DELETE FROM customers WHERE id = :id");
@@ -17,7 +17,7 @@ if (isset($_GET['delete_customer'])) {
     exit;
 }
 
-// Handle deletion of order
+
 if (isset($_GET['delete_order'])) {
     $id = intval($_GET['delete_order']);
     $stmt = $pdo->prepare("DELETE FROM orders WHERE id = :id");
@@ -26,11 +26,11 @@ if (isset($_GET['delete_order'])) {
     exit;
 }
 
-// Fetch customers
+
 $stmt = $pdo->query("SELECT * FROM customers ORDER BY id DESC");
 $customers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Fetch orders
+
 $stmt2 = $pdo->query("SELECT * FROM orders ORDER BY id DESC");
 $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -54,7 +54,7 @@ $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-<!-- Sidebar -->
+
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
 <div class="px-6 py-4 flex items-center gap-3 border-b">
 <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
@@ -87,10 +87,10 @@ $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 </div>
 </aside>
 
-<!-- Main content -->
+
 <main class="flex-1 p-8 overflow-y-auto">
 
-<!-- Customers Section -->
+
 <div class="flex justify-between items-center mb-8">
 <h2 class="text-4xl font-bold text-gray-800">Customers</h2>
 <button class="bg-[var(--primary-color)] hover:bg-[var(--primary-hover-color)] text-white font-bold py-2 px-4 rounded-md flex items-center gap-2" onclick="window.location.href='add_customer.php'">
@@ -134,7 +134,7 @@ $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 <?php endif; ?>
 </div>
 
-<!-- Orders Section -->
+
 <div class="flex justify-between items-center mb-8">
 <h2 class="text-4xl font-bold text-gray-800">Orders</h2>
 <button class="bg-[var(--primary-color)] hover:bg-[var(--primary-hover-color)] text-white font-bold py-2 px-4 rounded-md flex items-center gap-2" onclick="window.location.href='add_order.php'">

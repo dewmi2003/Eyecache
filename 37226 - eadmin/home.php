@@ -7,19 +7,19 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
-// Fetch total products
+
 $totalProductsStmt = $pdo->query("SELECT COUNT(*) AS total FROM products");
 $totalProducts = $totalProductsStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 
-// Fetch total orders
+
 $totalOrdersStmt = $pdo->query("SELECT COUNT(*) AS total FROM orders");
 $totalOrders = $totalOrdersStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 
-// Fetch total customers
+
 $totalCustomersStmt = $pdo->query("SELECT COUNT(*) AS total FROM customers");
 $totalCustomers = $totalCustomersStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 
-// Fetch total sales
+
 $totalSalesStmt = $pdo->query("SELECT SUM(total_amount) AS total FROM orders");
 $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 ?>
@@ -43,7 +43,7 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-<!-- Sidebar -->
+
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
 <div class="px-6 py-4 flex items-center gap-3 border-b">
 <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
@@ -80,7 +80,7 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 <h2 class="text-4xl font-bold text-gray-800 mb-8">Dashboard</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-<!-- Total Products -->
+
 <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
 <div>
 <p class="text-gray-500 text-sm font-medium">Total Products</p>
@@ -91,7 +91,7 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 </div>
 </div>
 
-<!-- Total Orders -->
+
 <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
 <div>
 <p class="text-gray-500 text-sm font-medium">Total Orders</p>
@@ -102,7 +102,7 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 </div>
 </div>
 
-<!-- Total Customers -->
+
 <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
 <div>
 <p class="text-gray-500 text-sm font-medium">Total Customers</p>
@@ -113,7 +113,7 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 </div>
 </div>
 
-<!-- Total Sales -->
+
 <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
 <div>
 <p class="text-gray-500 text-sm font-medium">Total Sales</p>

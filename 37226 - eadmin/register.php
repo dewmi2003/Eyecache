@@ -1,8 +1,8 @@
 <?php
 session_start();
-require 'db_connect.php'; // contains your PDO or MySQL connection ($pdo)
+require 'db_connect.php'; 
 
-// Check if form is submitted
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $full_name = trim($_POST['full_name']);
     $email = trim($_POST['email']);
@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_password = $_POST['confirm_password'];
     $role = $_POST['role'];
 
-    // Basic validation
+    
     if (empty($full_name) || empty($email) || empty($password) || empty($role)) {
         die("All fields are required.");
     }
@@ -19,11 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Passwords do not match.");
     }
 
-    // Hash password
+    
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     try {
-        // Insert into users_tba
+        
         $stmt = $pdo->prepare("INSERT INTO users_tba (full_name, email, password, role) 
                                VALUES (:full_name, :email, :password, :role)");
         $stmt->execute([
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':role' => $role
         ]);
 
-        // Redirect after success
+        
         header("Location: submitted.php");
         exit;
     } catch (PDOException $e) {

@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
-// Check if a customer ID is passed
+
 if (!isset($_GET['id'])) {
     header("Location: customers.php");
     exit;
@@ -15,7 +15,7 @@ if (!isset($_GET['id'])) {
 
 $customer_id = intval($_GET['id']);
 
-// Fetch existing customer data
+
 $stmt = $pdo->prepare("SELECT * FROM customers WHERE id = :id");
 $stmt->execute([':id' => $customer_id]);
 $customer = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -25,7 +25,7 @@ if (!$customer) {
     exit;
 }
 
-// Handle form submission
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $full_name = $_POST['full_name'] ?? '';
     $email = $_POST['email'] ?? '';
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-<!-- Sidebar (same as before) -->
+
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
 <div class="px-6 py-4 flex items-center gap-3 border-b">
 <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
