@@ -7,15 +7,15 @@ if (!isset($_SESSION['admin_id'])) {
 
 require_once "db_connect.php";
 
-// Fetch categories
+
 $categoriesStmt = $pdo->query("SELECT * FROM categories ORDER BY id DESC");
 $categories = $categoriesStmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Fetch products
+
 $productsStmt = $pdo->query("SELECT * FROM products ORDER BY id DESC");
 $products = $productsStmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Handle category deletion
+
 if (isset($_GET['delete_category_id'])) {
     $delete_id = intval($_GET['delete_category_id']);
     $stmt = $pdo->prepare("DELETE FROM categories WHERE id = ?");
@@ -24,7 +24,7 @@ if (isset($_GET['delete_category_id'])) {
     exit;
 }
 
-// Handle product deletion
+
 if (isset($_GET['delete_product_id'])) {
     $delete_id = intval($_GET['delete_product_id']);
     $stmt = $pdo->prepare("DELETE FROM products WHERE id = ?");
@@ -53,7 +53,7 @@ if (isset($_GET['delete_product_id'])) {
 <body class="bg-gray-50" style="font-family: Inter, 'Noto Sans', sans-serif;">
 <div class="flex h-screen">
 
-<!-- Sidebar -->
+
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
   <div class="px-6 py-4 flex items-center gap-3 border-b">
     <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
@@ -91,7 +91,7 @@ if (isset($_GET['delete_product_id'])) {
   </div>
 </aside>
 
-<!-- Main -->
+
 <main class="flex-1 p-8 overflow-y-auto">
 <div class="flex justify-between items-center mb-8">
   <h2 class="text-4xl font-bold text-gray-800">Products</h2>
@@ -105,7 +105,7 @@ if (isset($_GET['delete_product_id'])) {
   </div>
 </div>
 
-<!-- Categories Table -->
+
 <div class="mb-8">
 <h3 class="text-2xl font-bold text-gray-800 mb-4">Product Categories</h3>
 <div class="bg-white rounded-lg shadow-md overflow-hidden">
@@ -139,7 +139,7 @@ if (isset($_GET['delete_product_id'])) {
 </div>
 </div>
 
-<!-- Products Table -->
+
 <div>
 <h3 class="text-2xl font-bold text-gray-800 mb-4">All Products</h3>
 <div class="bg-white rounded-lg shadow-md overflow-hidden">

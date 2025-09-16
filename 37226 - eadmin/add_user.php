@@ -11,14 +11,14 @@ $errors = [];
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Collect and sanitize input
+    
     $full_name = trim($_POST['full-name']);
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm-password'];
     $role = $_POST['role'];
 
-    // Basic validation
+    
     if (empty($full_name)) $errors[] = "Full Name is required.";
     if (empty($email)) $errors[] = "Email is required.";
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email format.";
@@ -26,13 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($password !== $confirm_password) $errors[] = "Passwords do not match.";
     if (empty($role)) $errors[] = "Role is required.";
 
-    // If no errors, insert into users table
+    
     if (empty($errors)) {
         try {
-            // Hash the password
+            
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-            // Insert user
+            
             $stmt = $pdo->prepare("INSERT INTO users (full_name, email, password, role) VALUES (?, ?, ?, ?)");
             $stmt->execute([$full_name, $email, $password_hash, $role]);
 
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-<!-- Sidebar -->
+
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
     <div class="px-6 py-4 flex items-center gap-3 border-b">
         <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="bg-white rounded-lg shadow-md p-8 max-w-4xl mx-auto">
 
-        <!-- Display success/error messages -->
+        
         <?php if(!empty($success)): ?>
             <div class="bg-green-100 text-green-700 p-4 rounded mb-4"><?php echo $success; ?></div>
         <?php endif; ?>

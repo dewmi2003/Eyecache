@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db_connect.php'; // Make sure $pdo connects to your database
+require 'db_connect.php'; 
 
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin_id'])) {
 $full_name = $email = $phone = "";
 $success = $error = "";
 
-// Handle form submission
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $full_name = trim($_POST['full_name']);
     $email = trim($_POST['email']);
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-<!-- Sidebar -->
+
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
 <div class="px-6 py-4 flex items-center gap-3 border-b">
 <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">

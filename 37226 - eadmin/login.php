@@ -7,13 +7,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = trim($_POST['password']);
 
     if (!empty($email) && !empty($password)) {
-        // find user by email or full name
+        
         $stmt = $pdo->prepare("SELECT id, full_name, email, password, role FROM users WHERE email = :email OR full_name = :email LIMIT 1");
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
-            // login success → store session
+            
             $_SESSION['admin_id'] = $user['id'];
             $_SESSION['admin_full_name'] = $user['full_name'];
             $_SESSION['admin_role'] = $user['role'];
