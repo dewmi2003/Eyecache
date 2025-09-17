@@ -166,15 +166,15 @@
             <span class="fas fa-bars"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                <li class="nav-item"><a href="shop_page.html" class="nav-link"><i class="fas fa-store"></i> Shop</a></li>
-                <li class="nav-item"><a href="#cart" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-                <li class="nav-item"><a href="#user" class="nav-link"><i class="fas fa-user"></i> User</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-        </div>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="/ehome/Eyecache1.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li class="nav-item"><a href="/eshop/shop_page.php" class="nav-link"><i class="fas fa-store"></i> Shop</a></li>
+        <li class="nav-item"><a href="/ecart/cart.php" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+        <li class="nav-item"><a href="/elogin/re/EyecacheLogin.php" class="nav-link"><i class="fas fa-user"></i> User</a></li>
+        <li class="nav-item"><a href="/eaboutus/index.html" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li class="nav-item"><a href="/econtact/index.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </div>
     </nav>
 
     <!-- Product Section -->
@@ -194,7 +194,7 @@
                         <h5 class="card-title">SolarFlare Tee</h5>
                         <p class="text-muted">Color: Red</p>
                         <p class="fw-bold">Rs. 3990</p>
-                        <button class="btn btn-primary add-to-cart-btn" data-id="1">Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart-btn" data-id="1"><a href="/eproduct/Citrine Glow.php" class="nav-link">Add to Cart</a></button>
                         <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
                     </div>
                 </div>
@@ -210,8 +210,7 @@
                         <h5 class="card-title">Midnight Mirage Hoodie</h5>
                         <p class="text-muted">Color: Black</p>
                         <p class="fw-bold">Rs. 6990</p>
-                        <button class="btn btn-primary add-to-cart-btn" data-id="2">Add to Cart</button>
-                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
+                        <button class="btn btn-primary add-to-cart-btn" data-id="1"><a href="/eproduct/Midnight Mirage Hoodie.php" class="nav-link">Add to Cart</a></button>                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
                     </div>
                 </div>
             </div>
@@ -226,8 +225,7 @@
                         <h5 class="card-title">Eclipse Cap</h5>
                         <p class="text-muted">Color: White</p>
                         <p class="fw-bold">Rs. 1990</p>
-                        <button class="btn btn-primary add-to-cart-btn" data-id="3">Add to Cart</button>
-                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
+                        <button class="btn btn-primary add-to-cart-btn" data-id="1"><a href="/eproduct/Eclipse Cap.php" class="nav-link">Add to Cart</a></button><div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
                     </div>
                 </div>
             </div>
@@ -242,8 +240,7 @@
                         <h5 class="card-title">Solstice Red</h5>
                         <p class="text-muted">Color: Deep Crimson</p>
                         <p class="fw-bold">Rs. 4500</p>
-                        <button class="btn btn-primary add-to-cart-btn" data-id="4">Add to Cart</button>
-                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
+                        <button class="btn btn-primary add-to-cart-btn" data-id="1"><a href="/eproduct/Solstice Red.php" class="nav-link">Add to Cart</a></button>                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
                     </div>
                 </div>
             </div>
@@ -258,8 +255,7 @@
                         <h5 class="card-title">Eclipse Black</h5>
                         <p class="text-muted">Color: Pure Black</p>
                         <p class="fw-bold">Rs. 6990</p>
-                        <button class="btn btn-primary add-to-cart-btn" data-id="5">Add to Cart</button>
-                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
+                        <button class="btn btn-primary add-to-cart-btn" data-id="1"><a href="/eproduct/Eclipse Black.php" class="nav-link">Add to Cart</a></button>                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
                     </div>
                 </div>
             </div>
@@ -274,8 +270,7 @@
                         <h5 class="card-title">Ivory Bloom</h5>
                         <p class="text-muted">Color: Soft Cream</p>
                         <p class="fw-bold">Rs. 4200</p>
-                        <button class="btn btn-primary add-to-cart-btn" data-id="6">Add to Cart</button>
-                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
+                        <button class="btn btn-primary add-to-cart-btn" data-id="1"><a href="/eproduct/Ivory Bloom.php" class="nav-link">Add to Cart</a></button>                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
                     </div>
                 </div>
             </div>
@@ -290,14 +285,10 @@
                         <h5 class="card-title">Citrine Glow</h5>
                         <p class="text-muted">Color: Light Yellow</p>
                         <p class="fw-bold">Rs. 4300</p>
-                        <button class="btn btn-primary add-to-cart-btn" data-id="7">Add to Cart</button>
-                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
+                        <button class="btn btn-primary add-to-cart-btn" data-id="1"><a href="/eproduct/Citrine Glow.php" class="nav-link">Add to Cart</a></button>                        <div class="alert alert-success alert-dismissible fade d-none mt-3" role="alert"></div>
                     </div>
                 </div>
             </div>
-
-            <!-- Add more products as needed ... -->
-
         </div>
     </section>
 

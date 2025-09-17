@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root"; // change if needed
-$password = ""; // change if needed
+$password = "root"; // change if needed
 $dbname = "eyecache";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

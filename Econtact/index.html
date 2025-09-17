@@ -5,16 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EyeCache - Contact Us</title>
   
-  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     body {
-      
       background: linear-gradient(270deg, #000000, #111111, #000000);
       background-size: 600% 600%;
       animation: gradientBG 12s ease infinite;
@@ -23,6 +19,7 @@
       flex-direction: column;
       min-height: 100vh;
       margin: 0;
+      color: #ddd;
     }
 
     @keyframes gradientBG {
@@ -50,28 +47,27 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      transition: color 0.3s ease;
     }
 
     .navbar-nav .nav-link:hover {
       color: #ff4c80 !important;
     }
 
-    .contact-container {
+    h2 {
       
-      background: #111;
-      padding: 40px;
-      border-radius: 15px;
-      width: 100%;
-      max-width: 450px;
-      margin-left: 650px;
-      box-shadow: 0 0 25px rgba(255, 43, 104, 0.8);
-      margin-top: 190px;
-      text-align: center;
+      color: #FF2B68;
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
-    h2 {
-      color: #FF2B68;
-      margin-bottom: 20px;
+    .contact-container {
+      background: #111;
+      margin-top: 200px;
+      margin-right: 200px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 43, 104, 0.8);
     }
 
     input, textarea {
@@ -114,6 +110,16 @@
     .success-msg { background-color: #e59fbb; color: #781b34; }
     .error-msg { background-color: #dc3545; color: #fff; }
 
+    iframe {
+      margin-top: 50px;
+      margin-right: 200px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .h1{
+      margin-top: 150px;
+      margin-left: 250px;
+    }
     footer {
       background-color: #111;
       color: #bbb;
@@ -123,6 +129,32 @@
       margin-top: auto;
       border-top: 1px solid #222;
     }
+
+    .social-icons {
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-link {
+  margin-top: -110px;
+  margin-left: -100px;
+  background: #FF2B68;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  color: #fff;
+  background: #581629;
+  transform: scale(1.2);
+}
   </style>
 </head>
 <body>
@@ -144,17 +176,42 @@
   </div>
 </nav>
 
-<div class="contact-container">
-  <h2>Contact Us</h2>
+<div class="container my-5" style="padding-top:100px;">
+  <div class="row g-4">
+    
+    <!-- Contact Form -->
+    <div class="col-md-6">
+      <div class="contact-container">
+        <h2>Contact Us</h2>
+        <div class="message" id="formMessage"></div>
+        <form id="contactForm">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+          <input type="submit" value="Send Message">
+        </form>
+      </div>
+    </div>
 
-  <div class="message" id="formMessage"></div>
-
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-    <input type="submit" value="Send Message">
-  </form>
+    <!-- Map -->
+    <div class="col-md-6">
+      <h2 class="h1">Find Us</h2>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.123456!2d79.997849!3d6.843281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2567aee12345%3A0xabcdef123456789!2sHomagama%2C%20Western%20Province%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1690000000000" 
+        width="100%" 
+        height="400" 
+        allowfullscreen 
+        loading="lazy">
+      </iframe>
+    </div>
+    <div class="social-icons mt-4 text-center">
+  <a href="https://www.facebook.com/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://www.instagram.com/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+  <a href="https://twitter.com/" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+  <a href="https://www.linkedin.com/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+  <a href="https://www.tiktok.com/" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+</div>
+  </div>
 </div>
 
 <footer>
