@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user details
+
 $stmt = $connection->prepare("SELECT user_id, full_name, email, address, city, postal_code, phone,password 
                               FROM userdetails 
                               WHERE user_id=?");
@@ -33,16 +33,10 @@ $stmt->close();
 <head>
 <meta charset="UTF-8">
 <title>User Profile</title>
-<!-- Bootstrap -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Font -->
-  
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="navbar.css">
 <style>
     body {
         font-family: 'Poppins', sans-serif;
