@@ -75,7 +75,7 @@ $product = [
 
 <div class="container">
   <div class="left">
-    <img src="assets/download (20).jpeg" alt="<?php echo $product['name']; ?>">
+    <img src="/assets/download (20).jpeg" alt="<?php echo $product['name']; ?>">
   </div>
   <div class="right">
     <h1><?php echo $product['name']; ?></h1>

@@ -80,7 +80,7 @@ footer { background-color: #111; color: #bbb; text-align: center; padding: 1.5re
 
 <div class="container">
   <div class="left">
-    <img src="assets/Black - Moon - Dad Cap.jpeg" alt="<?php echo $product['name']; ?>">
+    <img src="/assets/Black - Moon - Dad Cap.jpeg" alt="<?php echo $product['name']; ?>">
   </div>
 
   <div class="right">

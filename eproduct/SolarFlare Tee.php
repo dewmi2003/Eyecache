@@ -103,7 +103,7 @@ $product = [
 
 <div class="container">
   <div class="left">
-    <img src="assets/solarflare.jpeg" alt="<?php echo $product['name']; ?>">
+    <img src="/assets/solarflare.jpeg" alt="<?php echo $product['name']; ?>">
   </div>
 
   <div class="right">

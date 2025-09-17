@@ -75,7 +75,7 @@ $product = [
 
 <div class="container">
   <div class="left">
-    <img src="assets/WhatsApp Image 2025-06-18 at 21.45.25_46520ade.jpg" alt="<?php echo $product['name']; ?>">
+    <img src="/assets/WhatsApp Image 2025-06-18 at 21.45.25_46520ade.jpg" alt="<?php echo $product['name']; ?>">
   </div>
   <div class="right">
     <h1><?php echo $product['name']; ?></h1>
