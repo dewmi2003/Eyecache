@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
-require 'db_connect.php'; 
+require 'db_connect.php'; // your PDO or mysqli connection
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['category_name'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $_POST['status'];
     $description = $_POST['category_description'];
 
-    
+    // Handle file upload
     $imagePath = null;
     if (isset($_FILES['category_image']) && $_FILES['category_image']['error'] === 0) {
         $targetDir = "uploads/categories/";
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    
+    // Insert into DB
     $stmt = $pdo->prepare("INSERT INTO categories 
         (category_name, slug, parent_id, status, description, image_path) 
         VALUES (?, ?, ?, ?, ?, ?)");
@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form action="add_category.php" method="POST" enctype="multipart/form-data">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     
-    
+    <!-- Category Name -->
     <div class="md:col-span-2">
       <label class="block text-sm font-medium text-gray-700 mb-2" for="category-name">
         Category Name
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       />
     </div>
 
-    
+    <!-- Slug -->
     <div class="md:col-span-2">
       <label class="block text-sm font-medium text-gray-700 mb-2" for="category-slug">
         Slug
@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </p>
     </div>
 
-    
+    <!-- Parent Category -->
     <div>
       <label class="block text-sm font-medium text-gray-700 mb-2" for="parent-category">
         Parent Category
@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </select>
     </div>
 
-    
+    <!-- Status -->
     <div>
       <label class="block text-sm font-medium text-gray-700 mb-2" for="status">
         Status
@@ -190,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </select>
     </div>
 
-    
+    <!-- Description -->
     <div class="md:col-span-2">
       <label class="block text-sm font-medium text-gray-700 mb-2" for="category-description">
         Description
@@ -204,7 +204,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       ></textarea>
     </div>
 
-    
+    <!-- Category Image -->
+ <!-- Category Image -->
 <div class="md:col-span-2">
   <label class="block text-sm font-medium text-gray-700 mb-2">
     Category Image
@@ -235,7 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
 
-      
+      <!-- Preview Image -->
       <div id="preview-container" class="mt-3 hidden">
         <p class="text-sm text-gray-600 mb-2">Preview:</p>
         <img id="preview-image" class="mx-auto h-24 rounded-md shadow-md border" />
@@ -244,7 +245,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 </div>
 
-
+<!-- JavaScript to show preview -->
 <script>
   function previewImage(event) {
     const file = event.target.files[0];
@@ -265,10 +266,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </script>
 
 
-
+<!-- End of grid -->
 </div>
 
-
+<!-- Buttons container -->
 <div class="mt-8 flex justify-end gap-4 w-full">
   <button 
     class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-md flex items-center gap-2" 

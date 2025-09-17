@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_id'])) {
 
 require_once "db_connect.php";
 
-
+// Handle approval
 if (isset($_GET['approve_id'])) {
     $approve_id = intval($_GET['approve_id']);
     try {
@@ -35,7 +35,7 @@ if (isset($_GET['approve_id'])) {
     }
 }
 
-
+// Handle deny
 if (isset($_GET['deny_id'])) {
     $deny_id = intval($_GET['deny_id']);
     try {
@@ -49,7 +49,7 @@ if (isset($_GET['deny_id'])) {
     }
 }
 
-
+// Handle delete user
 if (isset($_GET['delete_id'])) {
     $delete_id = intval($_GET['delete_id']);
     try {
@@ -63,7 +63,7 @@ if (isset($_GET['delete_id'])) {
     }
 }
 
-
+// Fetch users awaiting approval
 try {
     $stmt_tba = $pdo->query("SELECT id, full_name, email, role FROM users_tba ORDER BY id DESC");
     $users_tba = $stmt_tba->fetchAll(PDO::FETCH_ASSOC);
@@ -72,7 +72,7 @@ try {
     exit;
 }
 
-
+// Fetch all users
 try {
     $stmt_users = $pdo->query("SELECT id, full_name, email, role FROM users ORDER BY id DESC");
     $users = $stmt_users->fetchAll(PDO::FETCH_ASSOC);
@@ -100,7 +100,7 @@ try {
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-  
+  <!-- Sidebar -->
   <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
     <div class="px-6 py-4 flex items-center gap-3 border-b">
       <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
@@ -138,7 +138,7 @@ try {
     </div>
   </aside>
 
- 
+  <!-- Main Content -->
   <main class="flex-1 p-8 overflow-y-auto">
     <div class="flex justify-between items-center mb-8">
       <h2 class="text-4xl font-bold text-gray-800">Users Management</h2>
@@ -147,7 +147,7 @@ try {
       </button>
     </div>
 
-    
+    <!-- Awaiting Approval -->
     <div class="mb-12">
       <h3 class="text-2xl font-semibold text-gray-700 mb-4">Awaiting Approval</h3>
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
@@ -187,7 +187,7 @@ try {
       </div>
     </div>
 
-    
+    <!-- All Users -->
     <div>
       <h3 class="text-2xl font-semibold text-gray-700 mb-4">All Users</h3>
       <div class="bg-white rounded-lg shadow-md overflow-hidden">

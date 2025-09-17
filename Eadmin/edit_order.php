@@ -7,16 +7,16 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
-
+// Check order ID passed
 if (!isset($_GET['id'])) {
-    header("Location: customers.php"); 
+    header("Location: customers.php"); // redirect back to customers/orders list
     exit;
 }
 
 $order_id = intval($_GET['id']);
 
-
-$stmt = $pdo->prepare("SELECT * FROM orders WHERE id = :id");
+// Fetch the order
+$stmt = $pdo->prepare("SELECT * FROM orders1 WHERE id = :id");
 $stmt->execute([':id' => $order_id]);
 $order = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -25,11 +25,11 @@ if (!$order) {
     exit;
 }
 
-
+// Fetch all customers for dropdown
 $customers_stmt = $pdo->query("SELECT id, full_name FROM customers ORDER BY full_name ASC");
 $customers = $customers_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $customer_id = $_POST['customer_id'] ?? '';
     $order_date = $_POST['order_date'] ?? '';
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $shipping_address = $_POST['shipping_address'] ?? '';
     $status = $_POST['status'] ?? '';
 
-    $stmt = $pdo->prepare("UPDATE orders SET customer_id = :customer_id, order_date = :order_date, total_amount = :total_amount, shipping_address = :shipping_address, status = :status WHERE id = :id");
+    $stmt = $pdo->prepare("UPDATE orders1 SET customer_id = :customer_id, order_date = :order_date, total_amount = :total_amount, shipping_address = :shipping_address, status = :status WHERE id = :id");
     $stmt->execute([
         ':customer_id' => $customer_id,
         ':order_date' => $order_date,
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ':id' => $order_id
     ]);
 
-    header("Location: customers.php"); 
+    header("Location: customers.php"); // redirect after update
     exit;
 }
 ?>
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-
+<!-- Sidebar -->
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
 <div class="px-6 py-4 flex items-center gap-3 border-b">
 <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">

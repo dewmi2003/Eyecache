@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
-require_once "db_connect.php"; 
+require_once "db_connect.php"; // your PDO connection
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['product-name'] ?? '';
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stock = $_POST['stock'] ?? 0;
     $status = $_POST['status'] ?? 'Draft';
     
-    
+    // Handle single image upload
     $imagePath = null;
     if (!empty($_FILES['file-upload']['name'][0])) {
         $uploadDir = 'uploads/';
@@ -25,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $targetFile = $uploadDir . time() . '_' . $fileName;
             $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-           
+            // Validate file type
             $allowed = ['jpg','jpeg','png','gif'];
             if (in_array($fileType, $allowed)) {
                 if (move_uploaded_file($tmpName, $targetFile)) {
-                    $imagePath = $targetFile; 
-                    break; 
+                    $imagePath = $targetFile; // store the first image path
+                    break; // if only saving one image, exit loop
                 }
             }
         }
@@ -184,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p class="pl-1">or drag and drop</p>
             </div>
             <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-            
+            <!-- Image Preview -->
             <div id="image-preview" class="mt-4 flex gap-2 flex-wrap"></div>
         </div>
     </div>
@@ -192,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script>
 function previewImage(event) {
     const previewContainer = document.getElementById('image-preview');
-    previewContainer.innerHTML = ''; 
+    previewContainer.innerHTML = ''; // Clear previous previews
 
     const files = event.target.files;
     Array.from(files).forEach(file => {
