@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Pending orders
+
 $pending_stmt = $connection->prepare(
     "SELECT order_id, product_name, quantity, price, order_date, expected_date 
      FROM orders 
@@ -23,7 +23,7 @@ $pending_stmt->execute();
 $pending_orders = $pending_stmt->get_result();
 $pending_stmt->close();
 
-// Completed orders
+
 $completed_stmt = $connection->prepare(
     "SELECT order_id, product_name, quantity, price, order_date, expected_date 
      FROM orders 
@@ -42,16 +42,11 @@ $completed_stmt->close();
 <head>
 <meta charset="UTF-8">
 <title>Order Dashboard</title>
-<!-- Bootstrap -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Font -->
-  
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="navbar.css">
+    
 <style>
 body {
     font-family: 'Poppins', sans-serif;
@@ -133,10 +128,6 @@ footer {
     border-top: 1px solid #333;
     color: #ccc;
 }
-
-/* Responsive layout */
-
-
 </style>
 </head>
 <body>
