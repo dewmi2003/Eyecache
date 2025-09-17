@@ -309,6 +309,32 @@ CREATE TABLE `users_tba` (
 -- Indexes for dumped tables
 --
 
+CREATE TABLE `admins` (
+  `id` int NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(50) DEFAULT 'admin'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `full_name`, `email`, `password`, `role`) VALUES
+(3, 'pramodya dewmini', 'pdewmini@gmail.com', '$2y$10$6zTEXXWZ18wtl50i.OWP1u5Ah4QPt8toeT0HUB5Z/K71kpSD6qKXq', 'super_admin');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
 --
 -- Indexes for table `cart`
 --
