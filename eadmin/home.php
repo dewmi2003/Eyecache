@@ -7,21 +7,11 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
-
-$totalProductsStmt = $pdo->query("SELECT COUNT(*) AS total FROM products");
-$totalProducts = $totalProductsStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
-
-
-$totalOrdersStmt = $pdo->query("SELECT COUNT(*) AS total FROM orders");
-$totalOrders = $totalOrdersStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
-
-
-$totalCustomersStmt = $pdo->query("SELECT COUNT(*) AS total FROM customers");
-$totalCustomers = $totalCustomersStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
-
-
-$totalSalesStmt = $pdo->query("SELECT SUM(total_amount) AS total FROM orders");
-$totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
+// Fetch dashboard data
+$totalProducts = $pdo->query("SELECT COUNT(*) AS total FROM products1")->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
+$totalOrders   = $pdo->query("SELECT COUNT(*) AS total FROM orders1")->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
+$totalCustomers= $pdo->query("SELECT COUNT(*) AS total FROM customers")->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
+$totalSales    = $pdo->query("SELECT SUM(total_amount) AS total FROM orders1")->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +19,10 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <title>Admin Panel</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style type="text/tailwindcss">
+<style>
 :root {
   --primary-color: #1173d4;
   --primary-hover-color: #0e5aab;
@@ -43,7 +32,7 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-
+<!-- Sidebar -->
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
 <div class="px-6 py-4 flex items-center gap-3 border-b">
 <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
@@ -66,8 +55,8 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 <div class="flex items-center gap-3 mb-4">
 <img alt="User Avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsnnO_zYh00P_h9W9wfQEPKdkyZC3EQStflmIz19ZTAM8FehcV6CtGWnacI5Dg6JIGqc2H69DrRMt5YdznX0aO_okymxK52o6SMIhmnABRklLKPKXuq1FNYTUfe8YzrtDzBgjoAxHVUp1Z228UYBOSOx-LpgPgQ-oP6a5WOpsY3WlOM4qWXmSybwEr6iuod6qlsOhUv1WQStexmNJRul9qbhIusfe1Dc9h-KMt4M1OcZANfE2cPGciS_3Xubg1-J9JoDgjS5WPUpUq"/>
 <div>
-<p class="font-semibold"><?php echo $_SESSION['admin_full_name']; ?></p>
-<p class="text-sm text-gray-500"><?php echo $_SESSION['admin_role']; ?></p>
+<p class="font-semibold"><?= $_SESSION['admin_full_name'] ?></p>
+<p class="text-sm text-gray-500"><?= $_SESSION['admin_role'] ?></p>
 </div>
 </div>
 <a class="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors mt-2" href="logout.php">
@@ -80,7 +69,7 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 <h2 class="text-4xl font-bold text-gray-800 mb-8">Dashboard</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-
+<!-- Cards -->
 <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
 <div>
 <p class="text-gray-500 text-sm font-medium">Total Products</p>
@@ -90,7 +79,6 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 <span class="material-symbols-outlined text-blue-500">inventory_2</span>
 </div>
 </div>
-
 
 <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
 <div>
@@ -102,7 +90,6 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 </div>
 </div>
 
-
 <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
 <div>
 <p class="text-gray-500 text-sm font-medium">Total Customers</p>
@@ -112,7 +99,6 @@ $totalSales = $totalSalesStmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 <span class="material-symbols-outlined text-yellow-500">people</span>
 </div>
 </div>
-
 
 <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
 <div>

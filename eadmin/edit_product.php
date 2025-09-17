@@ -11,14 +11,14 @@ $product_id = $_GET['id'] ?? '';
 $product = null;
 $categories = $pdo->query("SELECT * FROM categories ORDER BY category_name ASC")->fetchAll(PDO::FETCH_ASSOC);
 
-
+// Fetch product details if ID is given
 if ($product_id) {
-    $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT * FROM products1 WHERE id = ?");
     $stmt->execute([$product_id]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['product-name'] ?? '';
     $description = $_POST['product-description'] ?? '';
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $_POST['status'] ?? '';
     $image_path = $product['image'] ?? '';
 
-    
+    // Handle file upload if a new file is selected
     if (!empty($_FILES['file-upload']['name'][0])) {
         $uploadDir = 'uploads/';
         $fileName = basename($_FILES['file-upload']['name'][0]);
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $image_path = $targetFile;
     }
 
-    $updateStmt = $pdo->prepare("UPDATE products SET product_name=?, description=?, category=?, sku=?, price=?, stock=?, status=?, image=? WHERE id=?");
+    $updateStmt = $pdo->prepare("UPDATE product1s SET product_name=?, description=?, category=?, sku=?, price=?, stock=?, status=?, image=? WHERE id=?");
     $updateStmt->execute([$name, $description, $category, $sku, $price, $stock, $status, $image_path, $product_id]);
 
     header("Location: products.php");
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-50" style="font-family: Inter, 'Noto Sans', sans-serif;">
 <div class="flex h-screen">
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
-
+<!-- Sidebar content -->
 <div class="px-6 py-4 flex items-center gap-3 border-b">
 <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
 <span class="material-symbols-outlined">store</span>

@@ -2,19 +2,19 @@
 session_start();
 require 'db_connect.php';
 
-
+// Check login
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit;
 }
 
-
+// Get category ID
 if (!isset($_GET['id'])) {
     die("Category ID missing.");
 }
 $category_id = $_GET['id'];
 
-
+// Fetch category details
 $stmt = $pdo->prepare("SELECT * FROM categories WHERE id = ?");
 $stmt->execute([$category_id]);
 $category = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -23,10 +23,10 @@ if (!$category) {
     die("Category not found.");
 }
 
-
+// Fetch parent categories for dropdown
 $parents = $pdo->query("SELECT id, category_name FROM categories WHERE parent_id IS NULL")->fetchAll(PDO::FETCH_ASSOC);
 
-
+// Handle update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['category_name'];
     $slug = $_POST['category_slug'];
@@ -82,7 +82,7 @@ function previewImage(event) {
 <body class="bg-gray-50" style="font-family: Inter, 'Noto Sans', sans-serif;">
 <div class="flex h-screen">
 
-
+<!-- Sidebar -->
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
 <div class="px-6 py-4 flex items-center gap-3 border-b">
   <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">

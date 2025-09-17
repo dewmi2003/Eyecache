@@ -1,17 +1,17 @@
 <?php
 session_start();
-require 'db_connect.php'; 
+require 'db_connect.php'; // Make sure $pdo is your PDO connection
 
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit;
 }
 
-
+// Initialize variables
 $customer_id = $order_date = $total_amount = $shipping_address = $status = "";
 $error = "";
 
-
+// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $customer_id = trim($_POST['customer_id']);
     $order_date = trim($_POST['order_date']);
@@ -22,14 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($customer_id) || empty($order_date) || empty($total_amount) || empty($shipping_address) || empty($status)) {
         $error = "All fields are required.";
     } else {
-        
+        // Check if customer exists
         $stmt = $pdo->prepare("SELECT id FROM customers WHERE id = :id");
         $stmt->execute([':id' => $customer_id]);
         if ($stmt->rowCount() == 0) {
             $error = "Customer ID does not exist.";
         } else {
-           
-            $stmt = $pdo->prepare("INSERT INTO orders (customer_id, order_date, total_amount, shipping_address, status) 
+            // Insert order
+            $stmt = $pdo->prepare("INSERT INTO orders1 (customer_id, order_date, total_amount, shipping_address, status) 
                                    VALUES (:customer_id, :order_date, :total_amount, :shipping_address, :status)");
             try {
                 $stmt->execute([

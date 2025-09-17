@@ -17,7 +17,7 @@ if (!isset($_GET['id'])) {
 
 $user_id = intval($_GET['id']);
 
-
+// Fetch existing user
 try {
     $stmt = $pdo->prepare("SELECT full_name, email, role FROM users WHERE id = ?");
     $stmt->execute([$user_id]);
@@ -32,7 +32,7 @@ try {
     exit;
 }
 
-
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $full_name = trim($_POST['full-name']);
     $email = trim($_POST['email']);
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $success = "User updated successfully!";
-            
+            // Refresh user data
             $stmt = $pdo->prepare("SELECT full_name, email, role FROM users WHERE id = ?");
             $stmt->execute([$user_id]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-  
+  <!-- Sidebar -->
   <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
     <div class="px-6 py-4 flex items-center gap-3 border-b">
       <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </aside>
 
- 
+  <!-- Main Content -->
   <main class="flex-1 p-8 overflow-y-auto">
     <div class="flex items-center mb-8">
       <a class="text-gray-500 hover:text-[var(--primary-color)] transition-colors" href="users.php">

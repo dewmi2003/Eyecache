@@ -2,13 +2,13 @@
 session_start();
 require 'db_connect.php';
 
-
+// Check admin login
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login_form.php");
     exit;
 }
 
-
+// Handle deletion of customer
 if (isset($_GET['delete_customer'])) {
     $id = intval($_GET['delete_customer']);
     $stmt = $pdo->prepare("DELETE FROM customers WHERE id = :id");
@@ -17,22 +17,22 @@ if (isset($_GET['delete_customer'])) {
     exit;
 }
 
-
+// Handle deletion of order
 if (isset($_GET['delete_order'])) {
     $id = intval($_GET['delete_order']);
-    $stmt = $pdo->prepare("DELETE FROM orders WHERE id = :id");
+    $stmt = $pdo->prepare("DELETE FROM orders1 WHERE id = :id");
     $stmt->execute([':id' => $id]);
     header("Location: customers.php");
     exit;
 }
 
-
+// Fetch customers
 $stmt = $pdo->query("SELECT * FROM customers ORDER BY id DESC");
 $customers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-$stmt2 = $pdo->query("SELECT * FROM orders ORDER BY id DESC");
-$orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+// Fetch orders
+$stmt2 = $pdo->query("SELECT * FROM orders1 ORDER BY id DESC");
+$orders = $stmt2->fetchAll(PDO::FETCH_ASSOC); // <-- changed variable name to $orders
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 <body class="bg-gray-50 font-sans">
 <div class="flex h-screen">
 
-
+<!-- Sidebar -->
 <aside class="w-64 bg-white text-gray-800 flex flex-col shadow-lg">
 <div class="px-6 py-4 flex items-center gap-3 border-b">
 <div class="p-2 bg-[var(--primary-color)] rounded-full text-white">
@@ -77,8 +77,8 @@ $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 <div class="flex items-center gap-3 mb-4">
 <img alt="User Avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsnnO_zYh00P_h9W9wfQEPKdkyZC3EQStflmIz19ZTAM8FehcV6CtGWnacI5Dg6JIGqc2H69DrRMt5YdznX0aO_okymxK52o6SMIhmnABRklLKPKXuq1FNYTUfe8YzrtDzBgjoAxHVUp1Z228UYBOSOx-LpgPgQ-oP6a5WOpsY3WlOM4qWXmSybwEr6iuod6qlsOhUv1WQStexmNJRul9qbhIusfe1Dc9h-KMt4M1OcZANfE2cPGciS_3Xubg1-J9JoDgjS5WPUpUq"/>
 <div>
-<p class="font-semibold"><?php echo $_SESSION['admin_full_name'] ?? 'Admin'; ?></p>
-<p class="text-sm text-gray-500"><?php echo $_SESSION['admin_role'] ?? 'Administrator'; ?></p>
+<p class="font-semibold"><?= $_SESSION['admin_full_name'] ?? 'Admin' ?></p>
+<p class="text-sm text-gray-500"><?= $_SESSION['admin_role'] ?? 'Administrator' ?></p>
 </div>
 </div>
 <a class="flex items-center gap-3 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors" href="logout.php">
@@ -87,10 +87,10 @@ $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 </div>
 </aside>
 
-
+<!-- Main content -->
 <main class="flex-1 p-8 overflow-y-auto">
 
-
+<!-- Customers Section -->
 <div class="flex justify-between items-center mb-8">
 <h2 class="text-4xl font-bold text-gray-800">Customers</h2>
 <button class="bg-[var(--primary-color)] hover:bg-[var(--primary-hover-color)] text-white font-bold py-2 px-4 rounded-md flex items-center gap-2" onclick="window.location.href='add_customer.php'">
@@ -99,7 +99,7 @@ $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-<?php if(count($customers) > 0): ?>
+<?php if(!empty($customers)): ?>
 <table class="w-full text-left">
 <thead class="bg-gray-100">
 <tr>
@@ -134,7 +134,7 @@ $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 <?php endif; ?>
 </div>
 
-
+<!-- Orders Section -->
 <div class="flex justify-between items-center mb-8">
 <h2 class="text-4xl font-bold text-gray-800">Orders</h2>
 <button class="bg-[var(--primary-color)] hover:bg-[var(--primary-hover-color)] text-white font-bold py-2 px-4 rounded-md flex items-center gap-2" onclick="window.location.href='add_order.php'">
@@ -143,7 +143,7 @@ $orders = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-<?php if(count($orders) > 0): ?>
+<?php if(!empty($orders)): ?>
 <table class="w-full text-left">
 <thead class="bg-gray-100">
 <tr>
