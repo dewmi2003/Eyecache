@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $stmt = $pdo->prepare("INSERT INTO products1 (product_name, description, category, sku, price, stock, status, image) 
+        $stmt = $pdo->prepare("INSERT INTO products (product_name, description, category, sku, price, stock, status, image) 
                                VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([$name, $description, $category, $sku, $price, $stock, $status, $imagePath]);
         header("Location: products.php?success=1");
