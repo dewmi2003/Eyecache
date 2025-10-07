@@ -1,7 +1,7 @@
 <?php
 $servername ="localhost";
 $username="root";
-$password="@Rchitect1408";
+$password="root";
 $dbname="eyecache";
 
 $connection=new mysqli($servername,$username,$password,$dbname);
