@@ -1,0 +1,19 @@
+    :root{
+        --base-color: #070b1d;
+        --base-variant: #101425;
+        --text-color: #fff;
+        --secondary-text: #a4a5b8;
+        --primary-color: #3a435d;
+        --accent-color: #ff3C78;
+        
+    }
+    body.light-mode{
+        
+       --base-color: white;
+        --base-variant: #e8e9ed;
+        --text-color: #111528;
+        --secondary-text: #232738;
+        --primary-color: #3a435d;
+        --accent-color: #ff3C78;
+        --accent-color-light: #ff4c80;  
+    }

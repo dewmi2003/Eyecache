@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EyeCache - Contact Us</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="/assets/css/lm.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(270deg, var(--base-color), var(--base-variant), var(--base-color));
+      background-size: 600% 600%;
+      animation: gradientBG 12s ease infinite;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      color: #ddd;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .navbar {
+      background-color: var(--base-variant) !important;
+      padding: 1rem 2rem;
+      box-shadow: 0 3px 10px rgba(255, 43, 104, 0.2);
+    }
+
+    .navbar-brand {
+      color: #FF2B68 !important;
+      font-weight: bold;
+      font-size: 1.8rem;
+    }
+
+    .navbar-nav .nav-link {
+      color: #FF2B68 !important;
+      font-weight: 600;
+      margin-left: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ff4c80 !important;
+    }
+
+    h2 {
+      
+      color: #FF2B68;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .contact-container {
+      background: var(--base-color);
+      margin-top: 200px;
+      margin-right: 200px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 43, 104, 0.8);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 2px solid #FF2B68;
+      background: var(--base-color);
+      color: var(--text-color);
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--text-color);
+      box-shadow: 0 0 10px #FF2B68;
+    }
+
+    input[type="submit"] {
+      background: #FF2B68;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background: #ff4c80;
+    }
+
+    .message {
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      display: none;
+      font-weight: 600;
+    }
+
+    .success-msg { background-color: #e59fbb; color: #781b34; }
+    .error-msg { background-color: #dc3545; color: #fff; }
+
+    iframe {
+      margin-top: 50px;
+      margin-right: 200px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .h1{
+      margin-top: 150px;
+      margin-left: 250px;
+    }
+    footer {
+      background-color: var(--base-variant);
+      color: var(--secondary-text);
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+      margin-top: auto;
+      border-top: 1px solid #222;
+    }
+
+    .social-icons {
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-link {
+  margin-top: -110px;
+  margin-left: -100px;
+  background: #FF2B68;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  color: #fff;
+  background: #581629;
+  transform: scale(1.2);
+}
+  </style>
+      <link href="/assets/css/theme.css" rel="stylesheet"/>
+</head>
+<body>
+
+<?php include '../includes/navbar.php'; ?>
+<div class="container my-5" style="padding-top:100px;">
+  <div class="row g-4">
+    
+    <!-- Contact Form -->
+    <div class="col-md-6">
+      <div class="contact-container">
+        <h2>Contact Us</h2>
+        <div class="message" id="formMessage"></div>
+        <form id="contactForm">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+          <input type="submit" value="Send Message">
+        </form>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="col-md-6">
+      <h2 class="h1">Find Us</h2>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.123456!2d79.997849!3d6.843281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2567aee12345%3A0xabcdef123456789!2sHomagama%2C%20Western%20Province%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1690000000000" 
+        width="100%" 
+        height="400" 
+        allowfullscreen 
+        loading="lazy">
+      </iframe>
+    </div>
+    <div class="social-icons mt-4 text-center">
+  <a href="https://www.facebook.com/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://www.instagram.com/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+  <a href="https://twitter.com/" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+  <a href="https://www.linkedin.com/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+  <a href="https://www.tiktok.com/" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+</div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 EyeCache. Designed for NSBM students and streetwear lovers worldwide.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault(); 
+    const form = e.target;
+    const formData = new FormData(form);
+    const messageBox = document.getElementById('formMessage');
+
+    fetch('contact.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        messageBox.style.display = 'block';
+        messageBox.textContent = data.message;
+        messageBox.className = data.status === 'success' ? 'message success-msg' : 'message error-msg';
+        if(data.status === 'success') form.reset();
+        setTimeout(() => { messageBox.style.display = 'none'; }, 4000);
+    })
+    .catch(() => {
+        messageBox.style.display = 'block';
+        messageBox.textContent = 'Oops! Something went wrong.';
+        messageBox.className = 'message error-msg';
+        setTimeout(() => { messageBox.style.display = 'none'; }, 4000);
+    });
+});
+</script>
+<script src="/assets/js/lm.js">
+  
+</script>
+</body>
+</html>
